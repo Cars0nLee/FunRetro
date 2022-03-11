@@ -67,13 +67,15 @@ async function run() {
     }
 
     console.log("Object: ", obj);
-
+    
+    // CSV format
     const result = [Object.keys(obj[0]), ...Object.values(obj).map(i=>Object.values(i))].reduce((string, item)=>{
         string += item.join(",") + "\n"
         return string;
     }, "");
     console.log(result)
 
+    // export "result" as CSV file
     const resolvedPath = path.resolve(`./${boardTitle2}.csv`);
     fs.writeFile(resolvedPath, result, (err)=>{
         if(err) {
