@@ -51,9 +51,12 @@ async function run() {
             const messageText = await messages[i].$eval('.easy-card-main .easy-card-main-content .text', (node) => node.innerText.trim());
             const votes = await messages[i].$eval('.easy-card-votes-container .easy-badge-votes', (node) => node.innerText.trim());
 
+            let row = i + (messages.length-(messages.length-1))
+
             if(votes >= 1){
                 obj.push({
                     "column":  columnTitle,
+                    "row": `Row ${row}`,
                     "message": messageText,
                     "vote": votes
                 })
@@ -117,7 +120,6 @@ async function run() {
     return parsedText;
 }
 
-// Exporting as .txt file
 function writeToFile(filePath, data) {
     fileName = data.split('\n')[0]
     newFilename = fileName.split(" ").join("")
