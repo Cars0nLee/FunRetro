@@ -117,6 +117,7 @@ async function run() {
     return parsedText;
 }
 
+// Exporting as .txt file
 function writeToFile(filePath, data) {
     fileName = data.split('\n')[0]
     newFilename = fileName.split(" ").join("")
